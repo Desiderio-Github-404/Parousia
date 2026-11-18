@@ -7,19 +7,12 @@ const highlights = [
   { tag: 'APRENDA ONDE ESTIVER', title: 'Leia e ouça ao seu ritmo', text: 'Uma experiência de aprendizagem pensada para acompanhar o seu dia.', icon: '♫' }
 ];
 
-const books = [
-{title:"A Autoridade do Crente",author:"Kenneth E. Hagin",category:"Fé e Vida Cristã",description:"Ensinamentos sobre a autoridade espiritual do cristão."},
-{title:"O Nome de Jesus",author:"Kenneth E. Hagin",category:"Estudos Bíblicos",description:"O significado e a importância do nome de Jesus."},
-{title:"Como Ser Guiado pelo Espírito de Deus",author:"Kenneth E. Hagin",category:"Espírito Santo",description:"Princípios sobre orientação e discernimento espiritual."},
-{title:"A Fé do Tipo de Deus",author:"Uebert Angel",category:"Fé e Vida Cristã",description:"Ensinamentos sobre fé e vida sobrenatural."},
-{title:"Como Ouvir a Voz de Deus",author:"Uebert Angel",category:"Espírito Santo",description:"Reflexões sobre ouvir e reconhecer a direção de Deus."},
-{title:"Como Ver Anjos",author:"Uebert Angel",category:"Estudos Bíblicos",description:"Uma abordagem sobre anjos e o mundo espiritual."},
-{title:"O Poder da Tua Mente",author:"Chris Oyakhilome",category:"Fé e Vida Cristã",description:"A importância de uma mente renovada."},
-{title:"Orar da Maneira Certa",author:"Chris Oyakhilome",category:"Oração",description:"Princípios sobre oração e comunhão com Deus."},
-{title:"Sete Coisas que o Espírito Santo Fará em Ti",author:"Chris Oyakhilome",category:"Espírito Santo",description:"Um estudo sobre a obra do Espírito Santo."}
+const readingSuggestions = [
+{title:"A Autoridade do Crente",author:"Kenneth E. Hagin",category:"Fé e vida cristã",description:"Uma reflexão sobre a autoridade espiritual do cristão."},
+{title:"O Nome de Jesus",author:"Kenneth E. Hagin",category:"Estudos bíblicos",description:"Um estudo sobre o significado do nome de Jesus."},
+{title:"Como Ser Guiado pelo Espírito de Deus",author:"Kenneth E. Hagin",category:"Espírito Santo",description:"Princípios sobre discernimento e orientação espiritual."}
 ];
-const authorsComingSoon = ["Shepherd Bushiri","Michael Orokpo","T.B. Joshua"];
-
+const featuredAuthors = ["Uebert Angel","Shepherd Bushiri","Michael Orokpo","Chris Oyakhilome","T.B. Joshua"];
 const arrow = '<span aria-hidden="true">→</span>';
 const root = document.querySelector('#app');
 
@@ -46,7 +39,7 @@ root.innerHTML = [
     highlights.map(function(item) { return '<article class="feature-card"><span class="feature-icon" aria-hidden="true">' + item.icon + '</span><span>' + item.tag + '</span><h3>' + item.title + '</h3><p>' + item.text + '</p></article>'; }).join('') +
   '</div></div></section>',
 
-  '<section class="catalog-section wrap" id="biblioteca"><div class="section-heading"><div><span class="eyebrow">BIBLIOTECA KOINONIA</span><h2>Leituras que marcaram<br>gerações de cristãos.</h2></div><p>Uma selecção inicial de títulos e autores. A disponibilidade e os formatos serão confirmados antes da comercialização.</p></div><div class="catalog-tools"><input id="book-search" type="search" placeholder="Pesquisar por título ou autor..."><select id="author-filter"><option value="">Todos os autores</option>' + Array.from(new Set(books.map(function(b){return b.author;}))).map(function(a){return '<option value="' + a + '">' + a + '</option>';}).join('') + '</select></div><div class="book-grid" id="book-grid"></div><div class="authors-note"><span class="eyebrow">AUTORES QUE QUEREMOS DESTACAR</span><p>' + authorsComingSoon.join(' · ') + ' — títulos a identificar e validar para inclusão no catálogo.</p></div></section>',
+  '<section class="catalog-section wrap" id="biblioteca"><div class="section-heading"><div><span class="eyebrow">PARA A SUA JORNADA</span><h2>Sugestões de leitura<br>para aprofundar a fé.</h2></div><p>Uma selecção editorial de obras e autores que poderá explorar. A Koinonia apresenta estas referências como sugestões independentes, não como produtos à venda.</p></div><div class="reading-grid">' + readingSuggestions.map(function(book,index){return '<article class="reading-card"><span class="reading-number">0' + (index+1) + '</span><span class="catalog-category">' + book.category + '</span><h3>' + book.title + '</h3><p class="catalog-author">' + book.author + '</p><p>' + book.description + '</p><span class="reading-label">SUGESTÃO DE LEITURA</span></article>';}).join('') + '</div><div class="authors-note"><span class="eyebrow">OUTROS AUTORES A EXPLORAR</span><p>' + featuredAuthors.join(' · ') + '</p><small>Novas recomendações serão acrescentadas após confirmação dos títulos e das respectivas edições.</small></div></section>',
   '<section class="library-cta wrap" id="contacto"><div><span class="eyebrow">A SUA PRÓXIMA LEITURA COMEÇA AQUI</span><h2>O conhecimento certo<br>pode transformar a sua jornada.</h2><p>Estamos a preparar a biblioteca digital Koinonia. Em breve, poderá descobrir e adquirir os seus próximos recursos.</p><a class="button button-gold" href="#sobre">Acompanhe o lançamento ' + arrow + '</a></div><div class="cta-decoration" aria-hidden="true"><span class="cta-book">▤</span><span>KOINONIA</span></div></section>',
   '<footer><div class="wrap footer-inner"><a class="brand footer-brand" href="#"><span class="brand-mark">K</span><span>KOINONIA<small>BOOKS &amp; KNOWLEDGE</small></span></a><p>Conhecimento que edifica. Verdade que transforma.</p><small>© ' + new Date().getFullYear() + ' KOINONIA. Todos os direitos reservados.</small></div></footer>',
   '</main>'
@@ -64,15 +57,3 @@ document.querySelectorAll('a[href^="#"]').forEach(function(link) {
   });
 });
 
-function renderBooks() {
- const q = document.querySelector('#book-search').value.toLocaleLowerCase();
- const a = document.querySelector('#author-filter').value;
- const list = books.filter(function(b){return (!a || b.author === a) && (b.title + ' ' + b.author + ' ' + b.category).toLocaleLowerCase().includes(q);});
- document.querySelector('#book-grid').innerHTML = list.length ? list.map(function(b){
-  const n = books.indexOf(b) % 4 + 1;
-  return '<article class="catalog-card"><div class="cover-art cover-' + n + '"><span>KOINONIA</span><b>' + b.title + '</b><small>' + b.author + '</small></div><div class="catalog-info"><span class="catalog-category">' + b.category + '</span><h3>' + b.title + '</h3><p class="catalog-author">' + b.author + '</p><p>' + b.description + '</p><span class="availability">Disponibilidade a confirmar</span></div></article>';
- }).join('') : '<p class="empty-catalog">Não encontrámos livros com essa pesquisa.</p>';
-}
-document.querySelector('#book-search').addEventListener('input', renderBooks);
-document.querySelector('#author-filter').addEventListener('change', renderBooks);
-renderBooks();
