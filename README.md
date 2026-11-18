@@ -1,4 +1,4 @@
-# PAROUSIA
+# KOINONIA
 
 **Conhecimento que edifica. Verdade que transforma.**
 
@@ -25,7 +25,7 @@ npm run preview
 ```
 
 ## Estado actual
-A landing page está implementada com apresentação da marca, categorias temáticas, secção institucional e chamada para a futura biblioteca digital.
+A landing page apresenta a marca Koinonia, categorias temáticas, secção institucional e chamada para a futura biblioteca digital.
 
 ## Próximas etapas
 1. Validar a identidade visual e a experiência da página inicial.
