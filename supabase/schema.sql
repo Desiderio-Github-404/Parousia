@@ -178,14 +178,8 @@ create policy "Orders: customer reads own"
 on public.orders for select to authenticated
 using (user_id = (select auth.uid()) or (select public.is_admin()));
 
-drop policy if exists "Orders: customer creates own pending order" on public.orders;
-create policy "Orders: customer creates own pending order"
-on public.orders for insert to authenticated
-with check (
-  user_id = (select auth.uid())
-  and status = 'pending'
-  and paid_at is null
-);
+-- Encomendas e respectivos itens são criados pelo backend confiável,
+-- que valida os preços no banco. Não permitir criação directa pelo navegador.
 
 drop policy if exists "Orders: admin manages" on public.orders;
 create policy "Orders: admin manages"
