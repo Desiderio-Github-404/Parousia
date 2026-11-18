@@ -121,3 +121,34 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+
+/* Catálogo inicial */
+.catalog-section{padding-top:90px;padding-bottom:95px}
+.catalog-tools{display:flex;gap:12px;margin:-12px 0 28px}
+.catalog-tools input,.catalog-tools select{background:#fffaf4;border:1px solid #eadfd3;padding:14px 16px;color:#310b18;font:inherit;font-size:12px;min-height:46px}
+.catalog-tools input{flex:1;min-width:0}
+.catalog-tools select{min-width:190px}
+.book-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.catalog-card{background:#fffaf4;border:1px solid #eadfd3;overflow:hidden;transition:transform .2s,border-color .2s}
+.catalog-card:hover{transform:translateY(-4px);border-color:#d6a84f}
+.cover-art{height:225px;margin:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;color:#fff4e6;box-shadow:0 9px 22px #130d0d20;position:relative;overflow:hidden}
+.cover-art:after{content:"";position:absolute;inset:9px;border:1px solid #d6a84f80;pointer-events:none}
+.cover-art span{font-size:8px;letter-spacing:3px;color:#f2d28b}
+.cover-art b{font-family:'Playfair Display',serif;font-size:23px;font-weight:500;line-height:1.2;margin:25px 0}
+.cover-art small{font-size:9px;letter-spacing:1px}
+.cover-1{background:linear-gradient(145deg,#541323,#130d0d)}
+.cover-2{background:linear-gradient(145deg,#a51c30,#310b18)}
+.cover-3{background:linear-gradient(145deg,#9a5a25,#310b18)}
+.cover-4{background:linear-gradient(145deg,#302018,#75402a)}
+.catalog-info{padding:0 20px 22px}
+.catalog-category{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#a51c30}
+.catalog-info h3{font:500 21px 'Playfair Display',serif;color:#310b18;margin:9px 0 5px}
+.catalog-author{font-size:11px!important;color:#a51c30!important;font-weight:700}
+.catalog-info p{font-size:11px;color:#786b68;line-height:1.7}
+.availability{display:inline-block;margin-top:8px;padding:7px 9px;background:#f4e8da;color:#78512d;font-size:9px;letter-spacing:.4px}
+.authors-note{margin-top:38px;padding:24px;border-left:2px solid #d6a84f;background:#fffaf4}
+.authors-note p{font-size:12px;color:#786b68;line-height:1.8;margin-bottom:0}
+.empty-catalog{grid-column:1/-1;color:#786b68;font-size:13px;padding:30px 0}
+@media(max-width:760px){.catalog-section{padding-top:65px;padding-bottom:70px}.catalog-tools{flex-direction:column}.catalog-tools select{width:100%}.book-grid{grid-template-columns:1fr 1fr;gap:12px}.cover-art{height:175px;margin:9px;padding:14px}.cover-art b{font-size:17px;margin:18px 0}.catalog-info{padding:0 12px 16px}.catalog-info h3{font-size:17px}}
+@media(max-width:420px){.book-grid{grid-template-columns:1fr 1fr}.cover-art{height:155px}.cover-art b{font-size:15px}}
