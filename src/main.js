@@ -38,7 +38,9 @@ root.innerHTML = [
 
 document.querySelectorAll('a[href^="#"]').forEach(function(link) {
   link.addEventListener('click', function(event) {
-    const target = document.querySelector(link.getAttribute('href'));
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
     if (target) {
       event.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
