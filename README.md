@@ -4,11 +4,13 @@
 
 Plataforma de livros e conhecimento cristão, com lançamento inicial como livraria digital para o público angolano.
 
-## Stack inicial
-- React 18
-- Vite
+## Stack actual
+- Vite 6
+- JavaScript puro (Vanilla JavaScript)
+- HTML5
 - CSS responsivo
-- Lucide React
+
+A aplicação não utiliza React nem outras bibliotecas de interface.
 
 ## Desenvolvimento local
 ```bash
@@ -16,8 +18,14 @@ npm install
 npm run dev
 ```
 
+## Build de produção
+```bash
+npm run build
+npm run preview
+```
+
 ## Estado actual
-A primeira versão da landing page está implementada, com apresentação da marca, categorias temáticas, secção institucional e chamada para a futura biblioteca digital.
+A landing page está implementada com apresentação da marca, categorias temáticas, secção institucional e chamada para a futura biblioteca digital.
 
 ## Próximas etapas
 1. Validar a identidade visual e a experiência da página inicial.
