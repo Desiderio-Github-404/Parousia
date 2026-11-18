@@ -1,4 +1,4 @@
--- PAROUSIA: estrutura inicial da livraria digital
+-- KOINONIA: estrutura inicial da livraria digital
 -- Executar no SQL Editor de um projecto Supabase novo.
 -- Depois de criar o primeiro utilizador administrador, atribuir-lhe role='admin'
 -- manualmente pelo painel SQL. Nunca permitir que um utilizador altere a própria role.
